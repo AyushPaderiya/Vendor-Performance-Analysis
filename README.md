@@ -26,7 +26,7 @@ This project ingests raw sales and purchase data, computes key performance metri
 
 ```
 /
-├── data/                         # Raw CSV files
+├── data.zip                         # Raw CSV files
 ├── scripts/
 │   ├── ingestion_db.py          # Load CSVs into SQLite
 │   └── get_vendor_summary.py    # SQL/Python summary table builder
