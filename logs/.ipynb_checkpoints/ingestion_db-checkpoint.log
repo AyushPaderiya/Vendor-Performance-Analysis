@@ -1,0 +1,3 @@
+2025-07-10 17:52:36,881 - INFO - Ingesting begin_inventory.csv into table 'begin_inventory'
+2025-07-10 17:52:40,627 - INFO - Successfully ingested table 'begin_inventory'
+2025-07-10 17:52:41,132 - INFO - Ingesting end_inventory.csv into table 'end_inventory'
