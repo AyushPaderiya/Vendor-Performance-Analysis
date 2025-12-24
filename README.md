@@ -59,22 +59,29 @@ This project ingests raw sales and purchase data, computes key performance metri
    git clone https://github.com/AyushPaderiya/Vendor-Performance-Analysis.git
    cd Vendor-Performance-Analysis
    ```
-2. **Install dependencies**
+
+2. **Data Setup**
+   
+   The dataset is too large for GitHub and is hosted externally.
+   * [Download Data Here](https://drive.google.com/file/d/11gvpbVVY735zTfNOqRPdjpsLiRvQGHVS/view?usp=sharing)
+   * Extract the ZIP contents directly into the `data/` folder in the project root.
+
+3. **Install dependencies**
 
    ```bash
    pip install -r requirements.txt
    ```
-3. **Run data ingestion and transformation**
+4. **Run data ingestion and transformation**
 
    ```bash
    python scripts/ingestion_db.py
    python scripts/get_vendor_summary.py
    ```
-4. **Explore analysis**
+5. **Explore analysis**
    Open and run the Jupyter notebooks in `/notebooks/`
-5. **View dashboard**
+6. **View dashboard**
    Open `dashboard/vendor_performance.pbix` in Power BI
-6. **Review report**
+7. **Review report**
    Refer to `reports/Vendor Performance Report.pdf` for key findings and recommendations
 
 ## 📈 Key Insights
