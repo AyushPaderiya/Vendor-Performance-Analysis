@@ -1,0 +1,104 @@
+# Vendor Performance Analysis Configuration
+# ==========================================
+# This file contains all configurable parameters for the data pipeline.
+# Modify values as needed for your environment.
+
+# Database Configuration
+database:
+  # SQLite database file path (relative to project root)
+  path: "inventory.db"
+  # Connection timeout in seconds
+  timeout: 30
+  # Echo SQL statements for debugging (true/false)
+  echo: false
+
+# Data Source Configuration
+data:
+  # Directory containing raw CSV files
+  raw_data_dir: "data"
+  # Supported file extensions
+  file_extensions:
+    - ".csv"
+  # Date format used in CSV files
+  date_format: "%Y-%m-%d"
+
+# ETL Configuration
+etl:
+  # Load mode: "replace" (full refresh) or "append" (incremental)
+  load_mode: "replace"
+  # Batch size for large file processing (rows per batch)
+  batch_size: 100000
+  # Enable data validation after ingestion
+  validate_after_load: true
+  # Minimum expected row counts (for validation)
+  min_row_counts:
+    begin_inventory: 200000
+    end_inventory: 200000
+    purchase_prices: 10000
+    purchases: 2000000
+    sales: 10000000
+    vendor_invoice: 5000
+
+# Data Quality Configuration
+data_quality:
+  # Maximum allowed null percentage per column (0.0 to 1.0)
+  max_null_percentage: 0.05
+  # Columns where nulls are acceptable
+  nullable_columns:
+    - "Approval"
+  # Columns that should never have nulls
+  required_columns:
+    - "VendorNumber"
+    - "Brand"
+    - "Quantity"
+    - "Dollars"
+
+# Missing Value Handling
+missing_values:
+  # Strategy per column type: "zero", "mean", "median", "drop", "flag"
+  numeric_strategy: "zero"
+  text_strategy: "unknown"
+  # Column-specific overrides
+  column_overrides:
+    FreightCost: "zero"        # Missing freight = no freight cost
+    TotalSalesQuantity: "zero" # No sales = zero quantity
+    TotalSalesDollars: "zero"  # No sales = zero revenue
+    Approval: "unknown"        # Missing approver = unknown
+
+# Logging Configuration
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  # Log file path
+  file: "logs/pipeline.log"
+  # Log format
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  # Append to log file (true) or overwrite (false)
+  append: true
+
+# Output Configuration
+output:
+  # Summary table name in database
+  summary_table: "vendor_sales_summary"
+  # Export formats (optional)
+  export_formats:
+    - "sqlite"
+  # Export directory for additional outputs
+  export_dir: "output"
+
+# Calculated Metrics Configuration
+metrics:
+  # Profit margin calculation
+  profit_margin:
+    # Prevent division by zero: replace zero denominator with this value
+    zero_replacement: 1
+    # Round to decimal places
+    decimal_places: 2
+  # Stock turnover calculation
+  stock_turnover:
+    zero_replacement: 1
+    decimal_places: 4
+  # Sales to purchase ratio
+  sales_to_purchase_ratio:
+    zero_replacement: 1
+    decimal_places: 4
