@@ -26,20 +26,29 @@ This project ingests raw sales and purchase data, computes key performance metri
 
 ```
 /
-├── data.zip                         # Raw CSV files
+├── config/
+│   ├── config.yaml              # Centralized configuration
+│   └── config_loader.py         # Configuration loader utility
+├── data/                        # Raw CSV files (6 tables)
+├── docs/
+│   ├── data_dictionary.md       # Complete schema documentation
+│   └── dashboard_narrative.md   # Dashboard storytelling guide
 ├── scripts/
 │   ├── ingestion_db.py          # Load CSVs into SQLite
 │   └── get_vendor_summary.py    # SQL/Python summary table builder
 ├── notebooks/
-│   ├── Exploratory Data Analysis.ipynb
-│   └── Vendor Performance Analysis.ipynb
+│   ├── 01_Exploratory_Data_Analysis.ipynb
+│   └── 02_Vendor_Performance_Analysis.ipynb
 ├── dashboard/
-│   └── vendor_performance.pbix  # Power BI file
+│   └── Vendor Performance Dashboard.pbix
 ├── reports/
 │   └── Vendor Performance Report.pdf
+├── tests/
+│   ├── test_metrics.py          # Unit tests for calculations
+│   └── test_data_validation.py  # Data integrity tests
 ├── logs/
-│   └── ingestion_db.log
-└── requirements.txt              # Python dependencies
+├── .gitignore
+└── requirements.txt
 ```
 
 ## 🧪 How to Run
