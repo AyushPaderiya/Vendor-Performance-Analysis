@@ -90,7 +90,6 @@ vendor-performance-analysis/
 │
 ├── docs/
 │   ├── data_dictionary.md       # Schema definitions and relationships
-│   └── dashboard_narrative.md   # Dashboard insights and storytelling
 │
 ├── scripts/
 │   ├── ingestion_db.py          # ETL: CSV → SQLite with validation
@@ -101,7 +100,7 @@ vendor-performance-analysis/
 │   └── 02_Vendor_Performance_Analysis.ipynb   # Statistical testing & insights
 │
 ├── dashboard/
-│   └── Vendor_Performance_Dashboard.pbix      # Interactive Power BI report
+│   └── vendor_dashboard.pbix                  # Interactive Power BI report
 │
 ├── reports/
 │   └── Vendor_Performance_Report.pdf          # Executive summary
@@ -162,7 +161,7 @@ jupyter notebook notebooks/01_Exploratory_Data_Analysis.ipynb
 
 **7. Open the dashboard**
 - Launch Power BI Desktop
-- Open `dashboard/Vendor Performance Dashboard.pbix`
+- Open `dashboard/vendor_dashboard.pbix`
 - Refresh data connections if prompted
 
 **8. Review the business report**
